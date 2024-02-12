@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Валентинка</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        #valentine {
+            text-align: center;
+        }
+        #valentine img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        #message {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+<div id="valentine">
+    <img src="resource/start.gif" alt="Valentine GIF">
+    <div id="message">Ты будешь моей валентиной</div>
+    <button class="button" onclick="redirectToNextPage()">Да</button>
+    <button class="button" onclick="moveAndResize('No')">Нет</button>
+</div>
+
+<script>
+    function moveAndResize(answer) {
+        var button = document.querySelector('.button:last-child'); // Изменено: выбираем последнюю кнопку
+        var newX = Math.random() * (150 - button.offsetWidth);
+        var newY = Math.random() * (500 - button.offsetHeight);
+        newX = Math.max(0, Math.min(newX, 150 - button.offsetWidth));
+        newY = Math.max(0, Math.min(newY, 150 - button.offsetHeight));
+        button.style.transform = 'translate(' + newX + 'px, ' + newY + 'px)';
+        if (answer === 'No') {
+            var currentSize = parseInt(window.getComputedStyle(button).fontSize);
+            button.style.fontSize = (currentSize * 0.9) + 'px';
+        }
+    }
+
+    function redirectToNextPage() {
+        window.location.href = 'finish.html';
+    }
+</script>
+</body>
+</html>
